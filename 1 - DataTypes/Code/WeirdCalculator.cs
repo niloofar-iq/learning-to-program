@@ -6,7 +6,11 @@ namespace DataTypes.Code
 	{
 		public static long SimpleWholeNumberAdd(int firstValue, long secondValue)
 		{
-			throw new NotImplementedException();
+			//throw new NotImplementedException();
+
+			var result = firstValue + secondValue;
+			return result;
+
 		}
 
 		public static decimal SimpleDecimalAdd(float firstValue, double secondValue, decimal thirdValue)
@@ -19,7 +23,12 @@ namespace DataTypes.Code
 			 * Hint: You can make this method's body one line!
 			 */
 
-			throw new NotImplementedException();
+			//var resultDouble = (double)thirdValue + secondValue;
+			//var resultFloat = (float)resultDouble + firstValue;
+
+			var resultFloat = (float)((double)thirdValue + secondValue) + firstValue;
+
+			return (decimal)resultFloat;
 		}
 
 		public static decimal ComplexDecimalAdd(float firstValue, double secondValue, decimal thirdValue)
@@ -40,8 +49,30 @@ namespace DataTypes.Code
 			 * If you are new to exceptions, google "C# Exception Handling" - litterally half our jobs is googling :P
 			 */
 
-			throw new NotImplementedException();
+			var result = (float)((double)thirdValue + secondValue) + firstValue;
+			if (secondValue > (double)decimal.MaxValue || firstValue > (float)((double)decimal.MaxValue))
+			{
+				return 0m;
+			}
+            else
+            {
+				try
+				{
+					return (decimal)result;
+
+				}
+				catch (ArgumentException ex)
+				{
+					throw new ArgumentException("result out of decimal range", ex);
+				}
+
+			}
+
+
+
 		}
+
+
 
 		public static decimal ComplexAdd(char firstValue, string secondValue)
 		{
@@ -49,16 +80,37 @@ namespace DataTypes.Code
 			 * You will notice the TDD tests around this just "assume" it will work. Do not worry about handling exceptions or errors, assume input is valid.
 			 */
 
-			throw new NotImplementedException();
+			//var firstValueString = Char.ToString(firstValue);
+			//var firstValueDecimal = Convert.ToDecimal(firstValueString);
+			var firstValueDecimal = Convert.ToDecimal(Char.ToString(firstValue));
+
+			var secondValueDecimal = Convert.ToDecimal(secondValue);
+
+			var result = Decimal.Add(firstValueDecimal, secondValueDecimal);
+
+			return result;
 		}
 
 		public static decimal ConditionalMath(int firstValue, int secondValue, bool returnNegative)
 		{
 			var actual = firstValue + secondValue;
 
-			if (returnNegative)
+			if(firstValue > 0 && secondValue > 0) 
 			{
-				actual = actual * -1;
+				if (returnNegative)
+				{
+					actual = actual * -1;
+				}
+
+			}
+
+			if (firstValue < 0 && secondValue < 0)
+			{
+				if (!returnNegative)
+				{
+					actual = actual * -1;
+				}
+
 			}
 
 			return actual;
