@@ -7,27 +7,34 @@ namespace ListsLogicAndIterations.Code
 	{
 		public static List<decimal> BuildList(decimal first, decimal second)
 		{
-			throw new NotImplementedException();
+			var list1 = new List<decimal> {
+				first , second 
+			};
+			return list1;
 		}
 
 		public static decimal GetValue(List<decimal> list, int position)
 		{
-			throw new NotImplementedException();
+			if(position <0 || position >= list.Count)
+            {
+				return 0;
+            }
+			return list[position];
 		}
 
 		public static void AddValue(List<decimal> list, decimal value)
 		{
-			throw new NotImplementedException();
+			list.Add(value);
 		}
 
 		public static void AddValue(List<decimal> list, List<decimal> value)
 		{
-			throw new NotImplementedException();
+			list.AddRange(value);
 		}
 
 		public static void RemoveValue(List<decimal> list, decimal value)
 		{
-			throw new NotImplementedException();
+			list.Remove(value);
 		}
 	}
 }

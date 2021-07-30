@@ -7,17 +7,40 @@ namespace ListsLogicAndIterations.Code
 	{
 		public static Dictionary<Guid, decimal> Build(Guid key, decimal value)
 		{
-			throw new NotImplementedException();
+			var dic1 = new Dictionary<Guid, decimal>()
+			{
+				{ key, value }
+			};
+			
+			return dic1;
 		}
 
 		public static decimal GetValue(Dictionary<Guid, decimal> dict, Guid key)
 		{
-			throw new NotImplementedException();
+            try
+            {
+				return dict[key];
+			}
+            catch(KeyNotFoundException)
+            {
+				return 0;
+            }
+
+
 		}
 
 		public static void AddValue(Dictionary<Guid, decimal> dict, Guid key, decimal value)
 		{
-			throw new NotImplementedException();
+            try
+            {
+				dict.Add(key, value);
+
+			}
+            catch (ArgumentException)
+            {
+
+            }
+
 		}
 	}
 }
