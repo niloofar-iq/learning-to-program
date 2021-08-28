@@ -3,7 +3,7 @@ using ObjectOrientedProblems.Code;
 
 namespace ObjectOrientedProblems.Tests.ObjectValidationTests
 {
-	[TestClass]
+    [TestClass]
 	public class PowerUp_Tests
 	{
 		[TestMethod]

@@ -1,23 +1,27 @@
 ﻿using ObjectOrientedProblems.Code.Interfaces;
-using System;
 
 namespace ObjectOrientedProblems.Code
 {
-	public static class FightClubGame
-	{
-		public static IPowerUp PurchasePowerUp()
-		{
-			throw new NotImplementedException();
-		}
 
-		public static IPotion PurchasePotion()
-		{
-			throw new NotImplementedException();
-		}
+    public static class FightClubGame
+    {
+        public static PowerUp PurchasePowerUp()
+        {
 
-		public static IFighter HireFighter()
-		{
-			throw new NotImplementedException();
-		}
-	}
+            PowerUp power = new PowerUp();
+            return power;
+        }
+
+        public static Potion PurchasePotion()
+        {
+            Potion potion = new Potion();
+            return potion;
+        }
+
+        public static IFighter HireFighter()
+        {
+            Fighter fighter = new Fighter();
+            return fighter;
+        }
+    }
 }
