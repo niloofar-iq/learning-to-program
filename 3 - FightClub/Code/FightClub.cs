@@ -5,17 +5,16 @@ namespace ObjectOrientedProblems.Code
 
     public static class FightClubGame
     {
-        public static PowerUp PurchasePowerUp()
+        public static IPowerUp PurchasePowerUp()
         {
-
-            PowerUp power = new PowerUp();
-            return power;
+            var i = new PowerUp();
+            i.DamageBuff = 4;
+            return new PowerUp();
         }
 
         public static Potion PurchasePotion()
         {
-            Potion potion = new Potion();
-            return potion;
+            return new Potion();
         }
 
         public static IFighter HireFighter()
