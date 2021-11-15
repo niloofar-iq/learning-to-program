@@ -1,6 +1,7 @@
 ﻿using CharacterBuilder.Code;
 using CharacterBuilder.Code.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CharacterBuilder.Code.Interfaces;
 using System;
 
 namespace CharacterBuilder.Tests
@@ -18,10 +19,20 @@ namespace CharacterBuilder.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "Height format is not correct. Please check documentation and try again.")]
-        public void BodyAttributes_shouldNotBeSet_WhenTheHeightFormatIsNOTCorrect()
+        public void CreateCharacter_shouldNotCreateCharacter_WhenTheHeightFormatIsNOTCorrect()
         {
-            new BodyAttributes(30, FitnessLevel.ExtremelyFit, "24'52");
+            //arrange
+            var newBodyAttributes = new BodyAttributes(40, FitnessLevel.FarFromFit, "24'52");
+            var newAbilityPoints = new Code.CharacterBuilder.AbilityPoints(10, 10, 5, 15, 5, 15);
+            var newCharacterName = "Ninja";
+
+            //act
+            var result = Code.CharacterBuilder.CreateCharacter(newBodyAttributes, newAbilityPoints, newCharacterName);
+
+            //assert
+
+            Assert.AreEqual("Height format is not correct. Please check documentation and try again.", result.ErrorMessage);
+
         }
 
         [TestMethod]
@@ -32,31 +43,34 @@ namespace CharacterBuilder.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "Sum of Ability Points must exactly equal to 60. Please try again.")]
-        public void AbilityPoints_shouldNotBeSet_WhenSumOfAllAbilityPointsIsNOTExactlySixty()
+        public void CreateCharacter_shouldNotCreateCharacter_WhenSumOfAllAbilityPointsIsNOTExactlySixty()
         {
-            new AbilityPoints(15, 10, 10, 5, 15, 15);
+
+            //arrange
+            var newBodyAttributes = new BodyAttributes(40, FitnessLevel.FarFromFit, "24");
+            var newAbilityPoints = new Code.CharacterBuilder.AbilityPoints(15, 10, 10, 5, 15, 15);
+            var newCharacterName = "Binja";
+
+            //act
+            var result = Code.CharacterBuilder.CreateCharacter(newBodyAttributes, newAbilityPoints, newCharacterName);
+
+            //assert
+
+            Assert.AreEqual("Sum of Ability Points must exactly equal to 60. Please try again.", result.ErrorMessage);
+
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "Charisma value is out of range. Supported values are between 0 to 20.")]
-        public void AbilityPoints_shouldNotBeSet_WhenAnyAbilityPointsIsOutOfRange()
-        {
-            new AbilityPoints(15, 10, 5, 5, 25, 5);
-        }
-
 
         [TestMethod]
-        public void AddCharacter_ShouldBuildCharacter_WhenBodyAttributesAndAbilityPointsAndNameAreSet()
+        public void CreateCharacter_ShouldBuildCharacter_WhenBodyAttributesAndAbilityPointsAndNameAreSet()
         {
             //arrange
             var newBodyAttributes = new BodyAttributes(30, FitnessLevel.ExtremelyFit, "5");
-            var newAbilityPoints = new AbilityPoints(15, 10, 10, 5, 5, 15);
+            var newAbilityPoints = new Code.CharacterBuilder.AbilityPoints(15, 10, 10, 5, 5, 15);
             var newCharacterName = "Batman";
-            var newCharacter = new Character(newBodyAttributes, newAbilityPoints, newCharacterName);
 
             //act
-            var newCharacterResult = Code.CharacterBuilder.AddCharacter(newCharacter);
+            var newCharacterResult = Code.CharacterBuilder.CreateCharacter(newBodyAttributes, newAbilityPoints, newCharacterName);
 
             //assert
             Assert.AreEqual("Batman", newCharacterResult.Character.CharacterName);
@@ -64,16 +78,15 @@ namespace CharacterBuilder.Tests
         }
 
         [TestMethod]
-        public void AddCharacter_ShouldAddCharacterToTheCreatedCharactersList_WhenBodyAttributesAndAbilityPointsAndNameAreSet()
+        public void CreateCharacter_ShouldAddCharacterToTheCreatedCharactersList_WhenBodyAttributesAndAbilityPointsAndNameAreSet()
         {
             //arrange
             var newBodyAttributes = new BodyAttributes(40, FitnessLevel.FarFromFit, "5'6");
-            var newAbilityPoints = new AbilityPoints(10, 10, 5, 15, 5, 15);
+            var newAbilityPoints = new Code.CharacterBuilder.AbilityPoints(10, 10, 5, 15, 5, 15);
             var newCharacterName = "Ninja";
-            var newCharacter = new Character(newBodyAttributes, newAbilityPoints, newCharacterName);
 
             //act
-            var result = Code.CharacterBuilder.AddCharacter(newCharacter);
+            var result = Code.CharacterBuilder.CreateCharacter(newBodyAttributes, newAbilityPoints, newCharacterName);
             var doesCharacterExistInList = Code.CharacterBuilder.CreatedCharactersList.Contains(result.Character);
 
             //assert

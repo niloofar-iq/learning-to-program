@@ -8,7 +8,7 @@ namespace CharacterBuilder.Code
     public class BodyAttributes
     {
 
-        public float HeadRoundness { get; private set; }
+        public int HeadRoundness { get; private set; }
         public FitnessLevel FitnessLevel { get; private set; }
         public string Height { get; private set; }
 
@@ -22,19 +22,11 @@ namespace CharacterBuilder.Code
             {
                 throw new ArgumentNullException("Body Attributes should all be set. Please try again.");
             }
-
-            if (ValidateBodyAttributes(headRoundness, fitnessLevel, height))
-            {
-                HeadRoundness = headRoundness;
-                FitnessLevel = fitnessLevel;
-                Height = height;
-            }
-            else
-            {
-                throw new ArgumentException("Provided Body Attributes are not valid.");
-            }
-
+            HeadRoundness = headRoundness;
+            FitnessLevel = fitnessLevel;
+            Height = height;
         }
+
 
 
 
@@ -137,11 +129,11 @@ namespace CharacterBuilder.Code
         }
 
 
-        public bool ValidateBodyAttributes(int headRoundness, FitnessLevel fitnessLevel, string height)
+        public bool ValidateBodyAttributes()
         {
-            var HeadRoundnessValidationResult = ValidateHeadRoundness(headRoundness);
-            var FitnessLevelValidationResult = ValidateFitnessLevel(fitnessLevel);
-            var HeightValidationResult = ValidateHeight(height);
+            var HeadRoundnessValidationResult = ValidateHeadRoundness(HeadRoundness);
+            var FitnessLevelValidationResult = ValidateFitnessLevel(FitnessLevel);
+            var HeightValidationResult = ValidateHeight(Height);
 
             if (HeadRoundnessValidationResult == true && FitnessLevelValidationResult == true && HeightValidationResult == true)
             {
