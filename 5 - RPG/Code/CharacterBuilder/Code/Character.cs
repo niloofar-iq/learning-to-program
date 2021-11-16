@@ -2,18 +2,15 @@
 {
     public class Character
     {
-        public BodyAttributes BodyAttributes { get; private set; }
-        public CharacterBuilder.AbilityPoints AbilityPoints { get; private set; }
+        public CharacterAttributes BodyAttributes { get; private set; }
+        public CharacterAbilities AbilityPoints { get; private set; }
         public string CharacterName { get; private set; }
 
-        public Character(BodyAttributes bodyAttributes, CharacterBuilder.AbilityPoints abilityPoints, string characterName)
+        public Character(CharacterAttributes bodyAttributes, CharacterAbilities abilityPoints, string characterName)
         {
             BodyAttributes = bodyAttributes;
             AbilityPoints = abilityPoints;
             CharacterName = characterName;
         }
-
-      
     }
 }
-           

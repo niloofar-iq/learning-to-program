@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterBuilder", "CharacterBuilder\CharacterBuilder.csproj", "{B94E71D2-9560-4DA6-B9A4-F747AA559877}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CharacterBuilder", "CharacterBuilder\CharacterBuilder.csproj", "{B94E71D2-9560-4DA6-B9A4-F747AA559877}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterBuilder_Tests", "CharacterBuilder_Tests\CharacterBuilder_Tests.csproj", "{4F7B9A97-DAE8-447D-B595-B6A58151C067}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B94E71D2-9560-4DA6-B9A4-F747AA559877}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B94E71D2-9560-4DA6-B9A4-F747AA559877}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B94E71D2-9560-4DA6-B9A4-F747AA559877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F7B9A97-DAE8-447D-B595-B6A58151C067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F7B9A97-DAE8-447D-B595-B6A58151C067}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F7B9A97-DAE8-447D-B595-B6A58151C067}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F7B9A97-DAE8-447D-B595-B6A58151C067}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
