@@ -3,7 +3,7 @@
     public class Character
     {
         public CharacterAttributes BodyAttributes { get; private set; }
-        public CharacterAbilities AbilityPoints { get; private set; }
+        public CharacterAbilities AbilityPoints { get; internal set; }
         public string CharacterName { get; private set; }
 
         public Character(CharacterAttributes bodyAttributes, CharacterAbilities abilityPoints, string characterName)
@@ -11,6 +11,10 @@
             BodyAttributes = bodyAttributes;
             AbilityPoints = abilityPoints;
             CharacterName = characterName;
+        }
+        public void SetNewAbilities(CharacterAbilities newCharacterAbilities)
+        {
+            AbilityPoints = newCharacterAbilities;
         }
     }
 }

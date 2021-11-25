@@ -57,23 +57,7 @@ namespace CharacterBuilder.Code
         }
 
 
-        //public bool ValidateAbilities()
-        //{
 
-        //    var AbilitiesSumResult = (Intelligence + Wisdom + Dexterity + Strength + Charisma + Constitution);
-
-
-        //    if (AbilitiesSumResult == AbilitiesSum)
-        //    {
-        //        return true;
-
-        //    }
-        //    else
-        //    {
-        //        return false;
-
-        //    }
-        //}
 
         public (bool IsValid, List<ValidationResult> Errors) ValidateAbilities()
         {
