@@ -1,4 +1,9 @@
-﻿namespace CharacterBuilder.Code
+﻿using System.Xml.Serialization;
+using System.Xml;
+using System.Collections;
+using System.IO;
+
+namespace CharacterBuilder.Code
 {
     public class Character
     {
@@ -16,5 +21,7 @@
         {
             AbilityPoints = newCharacterAbilities;
         }
+
+
     }
 }

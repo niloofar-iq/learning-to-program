@@ -2,6 +2,8 @@ using CharacterBuilder.Code;
 using CharacterBuilder.Code.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace CharacterBuilder.Tests
 {
@@ -101,7 +103,38 @@ namespace CharacterBuilder.Tests
 
         }
 
+        [TestMethod]
+        public void SerializeCharacter_shouldSaveCharacetrToTheSpecifiedPath()
+        {
+            //arrange
+            var attributes = new CharacterAttributes(50, FitnessLevel.FarFromFit, "10");
+            var abilities = new CharacterAbilities(5, 10, 10, 20, 5, 10);
+            var character = new Character(attributes, abilities, "Nemo");
+            var newSerializeCharacter = new CharacterSerializer();
 
+            //act
+            newSerializeCharacter.SerializeCharacter(character);
+
+            //assert
+            Assert.IsTrue(File.Exists(@"C:\CharacterFolder\Nemo.json"));
+        }
+
+        [TestMethod]
+        public void DeSerializeCharacter_shouldReturnCharacetrFromTheSpecifiedPath()
+        {
+            //arrange
+            var attributes = new CharacterAttributes(50, FitnessLevel.FarFromFit, "10");
+            var abilities = new CharacterAbilities(5, 10, 10, 20, 5, 10);
+            var expectedCharacter = new Character(attributes, abilities, "Nemo");
+            var characterFullPath = @"C:\CharacterFolder\Nemo.json";
+            var newSerializeCharacter = new CharacterSerializer();
+
+            //act
+            var actualDeserializedCharacter = newSerializeCharacter.DeserializeCharacter(characterFullPath);
+
+            //assert
+            Assert.AreEqual(expectedCharacter.CharacterName, actualDeserializedCharacter.CharacterName);
+        }
 
     }
 }
